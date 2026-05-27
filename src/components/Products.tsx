@@ -258,10 +258,11 @@ export default function Products() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => handleAddToCart(product)}
                     className="flex-1 bg-green-500 text-white py-3 rounded-lg font-medium hover:bg-green-600 transition-colors flex items-center justify-center space-x-2"
                   >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>WhatsApp</span>
+                    <ArrowRight className="w-4 h-4" />
+                    <span>Order Now</span>
                   </motion.button>
                 </div>
               </div>

@@ -2,26 +2,27 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function WhatsAppButton() {
-  const phoneNumber = "254780700584";
-  const message = encodeURIComponent(
-    "ORDER NOW - I want to place an order for roofing and steel products"
-  );
+  const router = useRouter();
+
+  const handleOrderNow = () => {
+    router.push('/cart');
+  };
 
   return (
-    <motion.a
-      href={`https://wa.me/${phoneNumber}?text=${message}`}
-      target="_blank"
-      rel="noopener noreferrer"
+    <motion.button
+      onClick={handleOrderNow}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-colors"
+      className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-colors flex items-center justify-center"
       style={{
         animation: "pulse 2s infinite",
       }}
+      title="Order Now"
     >
       <MessageCircle className="w-6 h-6" />
       <style jsx>{`
@@ -34,6 +35,6 @@ export default function WhatsAppButton() {
           }
         }
       `}</style>
-    </motion.a>
+    </motion.button>
   );
 }

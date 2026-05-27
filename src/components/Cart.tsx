@@ -36,7 +36,6 @@ export default function Cart() {
   };
 
   const handleOrderNow = () => {
-    if (items.length === 0) return;
     setShowCredentials(true);
   };
 
@@ -44,9 +43,14 @@ export default function Cart() {
     e.preventDefault();
 
     // Format order message
-    const orderDetails = items.map(item =>
-      `${item.name} - Qty: ${item.quantity}${item.color ? `, Color: ${item.color}` : ''}${item.gauge ? `, Gauge: ${item.gauge}` : ''}`
-    ).join('\n');
+    let orderDetails = "";
+    if (items.length > 0) {
+      orderDetails = items.map(item =>
+        `${item.name} - Qty: ${item.quantity}${item.color ? `, Color: ${item.color}` : ''}${item.gauge ? `, Gauge: ${item.gauge}` : ''}`
+      ).join('\n');
+    } else {
+      orderDetails = "Direct order inquiry - No specific items selected";
+    }
 
     const message = encodeURIComponent(
       `NEW ORDER\n\nCustomer Details:\nName: ${credentials.name}\nPhone: ${credentials.phone}\nEmail: ${credentials.email}\nAddress: ${credentials.address}\n\nOrder Items:\n${orderDetails}\n\nTotal: KES ${cart.getTotalPrice().toLocaleString()}`
@@ -213,14 +217,24 @@ export default function Cart() {
                 Your cart is empty
               </h3>
               <p className="text-steel-500 mb-6">
-                Add some products to get started
+                Add products or place a direct order inquiry
               </p>
-              <a
-                href="/#products"
-                className="inline-block bg-primary-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors"
-              >
-                Browse Products
-              </a>
+              <div className="flex gap-4 justify-center">
+                <a
+                  href="/#products"
+                  className="inline-block bg-primary-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors"
+                >
+                  Browse Products
+                </a>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handleOrderNow}
+                  className="inline-block bg-green-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-600 transition-colors"
+                >
+                  Order Now
+                </motion.button>
+              </div>
             </div>
           ) : (
             <>

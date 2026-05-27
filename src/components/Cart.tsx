@@ -56,7 +56,7 @@ export default function Cart() {
       `NEW ORDER\n\nCustomer Details:\nName: ${credentials.name}\nPhone: ${credentials.phone}\nEmail: ${credentials.email}\nAddress: ${credentials.address}\n\nOrder Items:\n${orderDetails}\n\nTotal: KES ${cart.getTotalPrice().toLocaleString()}`
     );
 
-    const phoneNumber = "254780700584";
+    const phoneNumber = "254111333107";
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
 
     // Clear cart after order

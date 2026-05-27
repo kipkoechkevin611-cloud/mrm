@@ -93,11 +93,11 @@ export default function Navbar() {
               )}
             </Link>
             <a
-              href="tel:+254780700584"
+              href="tel:+254111333107"
               className="flex items-center space-x-2 text-steel-600 hover:text-primary-600 transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span className="text-sm font-medium">+254 780 700 584</span>
+              <span className="text-sm font-medium">+254 111 333 107</span>
             </a>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -153,11 +153,11 @@ export default function Navbar() {
                   <span className="text-sm">Cart ({cartItemCount})</span>
                 </Link>
                 <a
-                  href="tel:+254780700584"
+                  href="tel:+254111333107"
                   className="flex items-center space-x-2 text-steel-600"
                 >
                   <Phone className="w-4 h-4" />
-                  <span className="text-sm">+254 780 700 584</span>
+                  <span className="text-sm">+254 111 333 107</span>
                 </a>
                 <button className="w-full bg-primary-600 text-white px-6 py-3 rounded-full font-medium hover:bg-primary-700 transition-colors">
                   Get Quote

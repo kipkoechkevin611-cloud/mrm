@@ -244,22 +244,13 @@ export default function Products() {
                   </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex gap-3 pt-4">
+                {/* Action Button */}
+                <div className="pt-4">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleAddToCart(product)}
-                    className="flex-1 bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center justify-center space-x-2"
-                  >
-                    <Plus className="w-4 h-4" />
-                    <span>Add to Cart</span>
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => handleAddToCart(product)}
-                    className="flex-1 bg-green-500 text-white py-3 rounded-lg font-medium hover:bg-green-600 transition-colors flex items-center justify-center space-x-2"
+                    className="w-full bg-green-500 text-white py-3 rounded-lg font-medium hover:bg-green-600 transition-colors flex items-center justify-center space-x-2"
                   >
                     <ArrowRight className="w-4 h-4" />
                     <span>Order Now</span>

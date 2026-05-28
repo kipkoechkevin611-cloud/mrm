@@ -44,6 +44,15 @@ export default function QuoteForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Format quote message for WhatsApp
+    const message = encodeURIComponent(
+      `NEW QUOTE REQUEST\n\nCustomer Details:\nName: ${formData.fullName}\nPhone: ${formData.phoneNumber}\nEmail: ${formData.email}\nCounty: ${formData.county}\n\nProject Details:\nProject Type: ${formData.projectType}\nProduct Needed: ${formData.productNeeded}\nQuantity: ${formData.quantity} sq meters\n\nAdditional Notes:\n${formData.additionalNotes || "None"}`
+    );
+
+    const phoneNumber = "254111333107";
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+
     setIsSubmitted(true);
     // Handle form submission
     setTimeout(() => setIsSubmitted(false), 3000);
@@ -176,7 +185,7 @@ export default function QuoteForm() {
                       required
                       value={formData.projectType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base bg-white"
                     >
                       <option value="">Select Project Type</option>
                       {projectTypes.map((type) => (

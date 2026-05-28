@@ -64,6 +64,9 @@ export default function Cart() {
     setItems([]);
     setShowCredentials(false);
     setCredentials({ name: "", phone: "", email: "", address: "" });
+
+    // Refresh page to ensure cart is completely cleared
+    window.location.reload();
   };
 
   if (showCredentials) {

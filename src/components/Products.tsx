@@ -16,7 +16,7 @@ const products = [
     description: "Modern box profile roofing sheets with excellent durability",
     colors: ["Red", "Blue", "Green", "Brown", "Grey"],
     gauges: ["0.4mm", "0.5mm", "0.7mm"],
-    price: 2500,
+    price: 1800,
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const products = [
     description: "Classic corrugated design for traditional and modern buildings",
     colors: ["Red", "Blue", "Green", "Brown", "Grey", "Black"],
     gauges: ["0.3mm", "0.4mm", "0.5mm"],
-    price: 2200,
+    price: 1600,
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const products = [
     description: "Premium tile profile for elegant residential roofing",
     colors: ["Red", "Brown", "Grey", "Black"],
     gauges: ["0.5mm", "0.7mm"],
-    price: 3500,
+    price: 2500,
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const products = [
     description: "Star tile profile with enhanced aesthetic appeal",
     colors: ["Red", "Brown", "Grey"],
     gauges: ["0.5mm", "0.7mm"],
-    price: 3800,
+    price: 2700,
   },
   {
     id: 5,
@@ -56,7 +56,7 @@ const products = [
     description: "Glazed finish with superior weather resistance",
     colors: ["Red", "Brown", "Grey", "Green"],
     gauges: ["0.5mm", "0.7mm"],
-    price: 4000,
+    price: 2800,
   },
   {
     id: 6,
@@ -66,7 +66,7 @@ const products = [
     description: "Mandarin tile profile for premium roofing solutions",
     colors: ["Red", "Brown", "Grey"],
     gauges: ["0.5mm", "0.7mm"],
-    price: 4200,
+    price: 3000,
   },
   {
     id: 7,
@@ -76,7 +76,7 @@ const products = [
     description: "Versatile plain sheets for various applications",
     colors: ["Galvanized", "Aluzinc"],
     gauges: ["0.3mm", "0.4mm", "0.5mm", "0.7mm"],
-    price: 2000,
+    price: 1500,
   },
   {
     id: 8,
@@ -86,7 +86,7 @@ const products = [
     description: "Flat ridges for seamless roof finishing",
     colors: ["Red", "Blue", "Green", "Brown", "Grey"],
     gauges: ["0.4mm", "0.5mm"],
-    price: 800,
+    price: 600,
   },
   {
     id: 9,
@@ -96,7 +96,7 @@ const products = [
     description: "Glazed ridges matching tile profiles",
     colors: ["Red", "Brown", "Grey"],
     gauges: ["0.5mm", "0.7mm"],
-    price: 1200,
+    price: 900,
   },
   {
     id: 10,
@@ -106,7 +106,7 @@ const products = [
     description: "Valley trays for effective water drainage",
     colors: ["Red", "Blue", "Green", "Brown", "Grey"],
     gauges: ["0.4mm", "0.5mm"],
-    price: 900,
+    price: 700,
   },
 ];
 
@@ -117,24 +117,27 @@ export default function Products() {
   const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
   const [selectedColor, setSelectedColor] = useState<{ [key: number]: string }>({});
   const [selectedGauge, setSelectedGauge] = useState<{ [key: number]: string }>({});
+  const [selectedQuantity, setSelectedQuantity] = useState<{ [key: number]: number }>({});
   const router = useRouter();
 
   const filteredProducts = selectedCategory === "All"
     ? products
     : products.filter(p => p.category === selectedCategory);
 
-  const handleAddToCart = (product: any) => {
+  const handleAddToCart = (product: any, navigate: boolean = false) => {
     const cartItem: CartItem = {
       id: product.id,
       name: product.name,
       image: product.image,
       price: product.price,
-      quantity: 1,
+      quantity: selectedQuantity[product.id] || 1,
       color: selectedColor[product.id],
       gauge: selectedGauge[product.id],
     };
     cart.addItem(cartItem);
-    router.push('/cart');
+    if (navigate) {
+      router.push('/cart');
+    }
   };
 
   return (
@@ -216,31 +219,61 @@ export default function Products() {
 
                 {/* Colors */}
                 <div>
-                  <p className="text-sm font-medium text-steel-700 mb-2">Available Colors:</p>
+                  <p className="text-sm font-medium text-steel-700 mb-2">Select Color:</p>
                   <div className="flex flex-wrap gap-2">
                     {product.colors.map((color) => (
-                      <span
+                      <button
                         key={color}
-                        className="text-xs bg-steel-100 text-steel-700 px-2 py-1 rounded-full"
+                        onClick={() => setSelectedColor({ ...selectedColor, [product.id]: color })}
+                        className={`text-xs px-3 py-2 rounded-full border-2 transition-all ${selectedColor[product.id] === color
+                          ? "bg-primary-600 text-white border-primary-600"
+                          : "bg-white text-steel-700 border-steel-300 hover:border-primary-500"
+                          }`}
                       >
                         {color}
-                      </span>
+                      </button>
                     ))}
                   </div>
                 </div>
 
                 {/* Gauges */}
                 <div>
-                  <p className="text-sm font-medium text-steel-700 mb-2">Thickness Options:</p>
+                  <p className="text-sm font-medium text-steel-700 mb-2">Select Thickness:</p>
                   <div className="flex flex-wrap gap-2">
                     {product.gauges.map((gauge) => (
-                      <span
+                      <button
                         key={gauge}
-                        className="text-xs bg-primary-100 text-primary-700 px-2 py-1 rounded-full"
+                        onClick={() => setSelectedGauge({ ...selectedGauge, [product.id]: gauge })}
+                        className={`text-xs px-3 py-2 rounded-full border-2 transition-all ${selectedGauge[product.id] === gauge
+                          ? "bg-primary-600 text-white border-primary-600"
+                          : "bg-white text-steel-700 border-steel-300 hover:border-primary-500"
+                          }`}
                       >
                         {gauge}
-                      </span>
+                      </button>
                     ))}
+                  </div>
+                </div>
+
+                {/* Quantity */}
+                <div>
+                  <p className="text-sm font-medium text-steel-700 mb-2">Quantity:</p>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: Math.max(1, (selectedQuantity[product.id] || 1) - 1) })}
+                      className="w-10 h-10 rounded-lg border-2 border-steel-300 flex items-center justify-center hover:border-primary-500 transition-colors"
+                    >
+                      -
+                    </button>
+                    <span className="w-12 text-center font-semibold text-steel-900">
+                      {selectedQuantity[product.id] || 1}
+                    </span>
+                    <button
+                      onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: (selectedQuantity[product.id] || 1) + 1 })}
+                      className="w-10 h-10 rounded-lg border-2 border-steel-300 flex items-center justify-center hover:border-primary-500 transition-colors"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
 
@@ -249,18 +282,7 @@ export default function Products() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => {
-                      const cartItem: CartItem = {
-                        id: product.id,
-                        name: product.name,
-                        image: product.image,
-                        price: product.price,
-                        quantity: 1,
-                        color: selectedColor[product.id],
-                        gauge: selectedGauge[product.id],
-                      };
-                      cart.addItem(cartItem);
-                    }}
+                    onClick={() => handleAddToCart(product, false)}
                     className="flex-1 bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors flex items-center justify-center space-x-2"
                   >
                     <Plus className="w-4 h-4" />
@@ -269,7 +291,7 @@ export default function Products() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => handleAddToCart(product)}
+                    onClick={() => handleAddToCart(product, true)}
                     className="flex-1 bg-green-500 text-white py-3 rounded-lg font-medium hover:bg-green-600 transition-colors flex items-center justify-center space-x-2"
                   >
                     <ArrowRight className="w-4 h-4" />

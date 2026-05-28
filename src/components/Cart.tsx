@@ -82,9 +82,16 @@ export default function Cart() {
               <h2 className="text-4xl font-bold font-montserrat text-steel-900 mb-2">
                 Complete Your Order
               </h2>
-              <p className="text-steel-600 text-lg">
+              <p className="text-steel-600 text-lg mb-4">
                 Please provide your contact details to proceed
               </p>
+              {items.length > 0 && (
+                <div className="bg-steel-50 p-4 rounded-xl border-2 border-primary-200">
+                  <p className="text-sm font-semibold text-steel-700">
+                    Order Summary: {items.length} item(s) - Total: KES {cart.getTotalPrice().toLocaleString()}
+                  </p>
+                </div>
+              )}
             </div>
 
             <form onSubmit={handleSubmitOrder} className="space-y-6">
@@ -303,15 +310,24 @@ export default function Cart() {
                     KES {cart.getTotalPrice().toLocaleString()}
                   </span>
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={handleOrderNow}
-                  className="w-full bg-green-500 text-white py-4 rounded-xl font-semibold hover:bg-green-600 transition-colors flex items-center justify-center space-x-2"
-                >
-                  <span>Order Now</span>
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
+                <div className="flex gap-4">
+                  <a
+                    href="/#products"
+                    className="flex-1 bg-steel-200 text-steel-900 py-4 rounded-xl font-semibold hover:bg-steel-300 transition-colors flex items-center justify-center space-x-2"
+                  >
+                    <ShoppingBag className="w-5 h-5" />
+                    <span>Continue Shopping</span>
+                  </a>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handleOrderNow}
+                    className="flex-1 bg-green-500 text-white py-4 rounded-xl font-semibold hover:bg-green-600 transition-colors flex items-center justify-center space-x-2"
+                  >
+                    <span>Order Now</span>
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.button>
+                </div>
               </div>
             </>
           )}

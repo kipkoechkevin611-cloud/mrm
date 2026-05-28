@@ -17,7 +17,15 @@ const counties = [
 ];
 
 const projectTypes = [
-  "Residential", "Commercial", "Industrial", "Institutional", "Agricultural",
+  "Residential Roofing",
+  "Commercial Building",
+  "Industrial Warehouse",
+  "School/Institutional",
+  "Agricultural Structure",
+  "Steel Fabrication",
+  "House Renovation",
+  "New Construction",
+  "Other",
 ];
 
 export default function QuoteForm() {

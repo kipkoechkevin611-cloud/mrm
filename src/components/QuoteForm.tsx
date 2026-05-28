@@ -91,7 +91,7 @@ export default function QuoteForm() {
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* Full Name */}
                   <div>
-                    <label className="block text-sm font-medium text-steel-700 mb-2">
+                    <label className="block text-base font-bold text-steel-900 mb-2">
                       Full Name *
                     </label>
                     <input
@@ -100,14 +100,14 @@ export default function QuoteForm() {
                       required
                       value={formData.fullName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
                       placeholder="John Doe"
                     />
                   </div>
 
                   {/* Phone Number */}
                   <div>
-                    <label className="block text-sm font-medium text-steel-700 mb-2">
+                    <label className="block text-base font-bold text-steel-900 mb-2">
                       Phone Number *
                     </label>
                     <input
@@ -116,14 +116,14 @@ export default function QuoteForm() {
                       required
                       value={formData.phoneNumber}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
                       placeholder="+254 700 000 000"
                     />
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label className="block text-sm font-medium text-steel-700 mb-2">
+                    <label className="block text-base font-bold text-steel-900 mb-2">
                       Email Address *
                     </label>
                     <input
@@ -132,14 +132,14 @@ export default function QuoteForm() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
                       placeholder="john@example.com"
                     />
                   </div>
 
                   {/* County */}
                   <div>
-                    <label className="block text-sm font-medium text-steel-700 mb-2">
+                    <label className="block text-base font-bold text-steel-900 mb-2">
                       County *
                     </label>
                     <select
@@ -147,7 +147,7 @@ export default function QuoteForm() {
                       required
                       value={formData.county}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
                     >
                       <option value="">Select County</option>
                       {counties.map((county) => (
@@ -160,7 +160,7 @@ export default function QuoteForm() {
 
                   {/* Project Type */}
                   <div>
-                    <label className="block text-sm font-medium text-steel-700 mb-2">
+                    <label className="block text-base font-bold text-steel-900 mb-2">
                       Project Type *
                     </label>
                     <select
@@ -168,7 +168,7 @@ export default function QuoteForm() {
                       required
                       value={formData.projectType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
                     >
                       <option value="">Select Project Type</option>
                       {projectTypes.map((type) => (
@@ -181,7 +181,7 @@ export default function QuoteForm() {
 
                   {/* Product Needed */}
                   <div>
-                    <label className="block text-sm font-medium text-steel-700 mb-2">
+                    <label className="block text-base font-bold text-steel-900 mb-2">
                       Product Needed *
                     </label>
                     <input
@@ -190,14 +190,14 @@ export default function QuoteForm() {
                       required
                       value={formData.productNeeded}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
                       placeholder="e.g., Box Profile Sheets"
                     />
                   </div>
 
                   {/* Quantity */}
                   <div>
-                    <label className="block text-sm font-medium text-steel-700 mb-2">
+                    <label className="block text-base font-bold text-steel-900 mb-2">
                       Quantity (sq meters) *
                     </label>
                     <input
@@ -206,14 +206,14 @@ export default function QuoteForm() {
                       required
                       value={formData.quantity}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
                       placeholder="100"
                     />
                   </div>
 
                   {/* File Upload */}
                   <div>
-                    <label className="block text-sm font-medium text-steel-700 mb-2">
+                    <label className="block text-base font-bold text-steel-900 mb-2">
                       Upload Drawings (Optional)
                     </label>
                     <div className="relative">
@@ -227,7 +227,7 @@ export default function QuoteForm() {
                         className="flex items-center justify-center w-full px-4 py-3 rounded-xl border-2 border-dashed border-steel-300 hover:border-primary-500 transition-colors cursor-pointer"
                       >
                         <FileText className="w-5 h-5 text-steel-400 mr-2" />
-                        <span className="text-steel-600">Click to upload files</span>
+                        <span className="text-steel-600 text-base">Click to upload files</span>
                       </label>
                     </div>
                   </div>
@@ -235,7 +235,7 @@ export default function QuoteForm() {
 
                 {/* Additional Notes */}
                 <div>
-                  <label className="block text-sm font-medium text-steel-700 mb-2">
+                  <label className="block text-base font-bold text-steel-900 mb-2">
                     Additional Notes
                   </label>
                   <textarea
@@ -243,7 +243,7 @@ export default function QuoteForm() {
                     value={formData.additionalNotes}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-3 rounded-xl border border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none resize-none"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none resize-none text-base"
                     placeholder="Any additional requirements or specifications..."
                   />
                 </div>
@@ -253,7 +253,7 @@ export default function QuoteForm() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full bg-primary-600 text-white py-4 rounded-xl font-semibold hover:bg-primary-700 transition-colors flex items-center justify-center space-x-2"
+                  className="w-full bg-primary-600 text-white py-4 rounded-xl font-bold hover:bg-primary-700 transition-colors flex items-center justify-center space-x-2 text-lg"
                 >
                   <Send className="w-5 h-5" />
                   <span>Submit Quote Request</span>

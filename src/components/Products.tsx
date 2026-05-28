@@ -261,16 +261,16 @@ export default function Products() {
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: Math.max(1, (selectedQuantity[product.id] || 1) - 1) })}
-                      className="w-10 h-10 rounded-lg border-2 border-steel-300 flex items-center justify-center hover:border-primary-500 transition-colors"
+                      className="w-12 h-12 rounded-lg border-2 border-steel-300 flex items-center justify-center hover:border-primary-500 hover:bg-primary-50 transition-colors text-xl font-bold text-steel-900"
                     >
-                      -
+                      −
                     </button>
-                    <span className="w-12 text-center font-semibold text-steel-900">
+                    <span className="w-16 text-center font-bold text-steel-900 text-lg">
                       {selectedQuantity[product.id] || 1}
                     </span>
                     <button
                       onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: (selectedQuantity[product.id] || 1) + 1 })}
-                      className="w-10 h-10 rounded-lg border-2 border-steel-300 flex items-center justify-center hover:border-primary-500 transition-colors"
+                      className="w-12 h-12 rounded-lg border-2 border-steel-300 flex items-center justify-center hover:border-primary-500 hover:bg-primary-50 transition-colors text-xl font-bold text-steel-900"
                     >
                       +
                     </button>

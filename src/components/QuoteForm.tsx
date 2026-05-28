@@ -51,7 +51,22 @@ export default function QuoteForm() {
     );
 
     const phoneNumber = "254111333107";
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+    // Reset form before opening WhatsApp
+    setFormData({
+      fullName: "",
+      phoneNumber: "",
+      email: "",
+      county: "",
+      projectType: "",
+      productNeeded: "",
+      quantity: "",
+      additionalNotes: "",
+    });
+
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
 
     setIsSubmitted(true);
     // Handle form submission
@@ -117,7 +132,7 @@ export default function QuoteForm() {
                       required
                       value={formData.fullName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base bg-white"
                       placeholder="John Doe"
                     />
                   </div>
@@ -133,7 +148,7 @@ export default function QuoteForm() {
                       required
                       value={formData.phoneNumber}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base bg-white"
                       placeholder="+254 700 000 000"
                     />
                   </div>
@@ -149,7 +164,7 @@ export default function QuoteForm() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base bg-white"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -164,7 +179,7 @@ export default function QuoteForm() {
                       required
                       value={formData.county}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base bg-white"
                     >
                       <option value="">Select County</option>
                       {counties.map((county) => (
@@ -207,7 +222,7 @@ export default function QuoteForm() {
                       required
                       value={formData.productNeeded}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base bg-white"
                       placeholder="e.g., Box Profile Sheets"
                     />
                   </div>
@@ -223,7 +238,7 @@ export default function QuoteForm() {
                       required
                       value={formData.quantity}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base"
+                      className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base bg-white"
                       placeholder="100"
                     />
                   </div>
@@ -260,7 +275,7 @@ export default function QuoteForm() {
                     value={formData.additionalNotes}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none resize-none text-base"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none resize-none text-base bg-white"
                     placeholder="Any additional requirements or specifications..."
                   />
                 </div>

@@ -310,7 +310,7 @@ export default function Products() {
                       {selectedQuantity[product.id] || 1}
                     </span>
                     <button
-                      onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: Math.min(6, (selectedQuantity[product.id] || 1) + 1) })}
+                      onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: (selectedQuantity[product.id] || 1) + 1 })}
                       className="w-12 h-12 rounded-lg border-2 border-steel-300 flex items-center justify-center hover:border-primary-500 hover:bg-primary-50 transition-colors text-xl font-bold text-steel-900"
                     >
                       +

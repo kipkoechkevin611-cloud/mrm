@@ -108,7 +108,7 @@ export default function Cart() {
                   required
                   value={credentials.name}
                   onChange={(e) => setCredentials({ ...credentials, name: e.target.value })}
-                  className="w-full px-5 py-4 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all outline-none text-lg font-medium bg-steel-50"
+                  className="w-full px-5 py-4 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all outline-none text-lg font-medium bg-steel-50 text-black"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -123,7 +123,7 @@ export default function Cart() {
                   required
                   value={credentials.phone}
                   onChange={(e) => setCredentials({ ...credentials, phone: e.target.value })}
-                  className="w-full px-5 py-4 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all outline-none text-lg font-medium bg-steel-50"
+                  className="w-full px-5 py-4 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all outline-none text-lg font-medium bg-steel-50 text-black"
                   placeholder="0712345678"
                 />
               </div>
@@ -138,7 +138,7 @@ export default function Cart() {
                   required
                   value={credentials.email}
                   onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
-                  className="w-full px-5 py-4 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all outline-none text-lg font-medium bg-steel-50"
+                  className="w-full px-5 py-4 rounded-xl border-2 border-steel-300 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all outline-none text-lg font-medium bg-steel-50 text-black"
                   placeholder="john@example.com"
                 />
               </div>
@@ -279,16 +279,16 @@ export default function Cart() {
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="w-8 h-8 flex items-center justify-center bg-steel-100 rounded-full hover:bg-steel-200 transition-colors"
+                          className="w-8 h-8 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
                         >
                           <Minus className="w-4 h-4" />
                         </motion.button>
-                        <span className="w-8 text-center font-semibold">{item.quantity}</span>
+                        <span className="w-8 text-center font-semibold text-black">{item.quantity}</span>
                         <motion.button
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="w-8 h-8 flex items-center justify-center bg-steel-100 rounded-full hover:bg-steel-200 transition-colors"
+                          className="w-8 h-8 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
                         >
                           <Plus className="w-4 h-4" />
                         </motion.button>

@@ -50,7 +50,7 @@ export default function QuoteForm() {
       `NEW QUOTE REQUEST\n\nCustomer Details:\nName: ${formData.fullName}\nPhone: ${formData.phoneNumber}\nEmail: ${formData.email}\nCounty: ${formData.county}\n\nProject Details:\nProject Type: ${formData.projectType}\nProduct Needed: ${formData.productNeeded}\nQuantity: ${formData.quantity} sq meters\n\nAdditional Notes:\n${formData.additionalNotes || "None"}`
     );
 
-    const phoneNumber = "254111333107";
+    const phoneNumber = "254750918945";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
     // Reset form before opening WhatsApp

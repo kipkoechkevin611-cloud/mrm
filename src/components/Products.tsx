@@ -10,13 +10,14 @@ import { useRouter } from "next/navigation";
 const products = [
   {
     id: 1,
-    name: "Box Profile Sheets",
+    name: "Box Profile Mabati",
     category: "Roofing",
     image: "/Box_profile.jpeg",
     description: "Modern box profile roofing sheets with excellent durability",
     colors: ["Red", "Blue", "Green", "Brown", "Grey"],
-    gauges: ["0.4mm", "0.5mm", "0.7mm"],
-    price: 1800,
+    gauges: ["28", "30"],
+    prices: { "28": 550, "30": 440 },
+    unit: "per meter",
   },
   {
     id: 2,
@@ -25,88 +26,152 @@ const products = [
     image: "/Corrugated.jpeg",
     description: "Classic corrugated design for traditional and modern buildings",
     colors: ["Red", "Blue", "Green", "Brown", "Grey", "Black"],
-    gauges: ["0.3mm", "0.4mm", "0.5mm"],
-    price: 1600,
+    gauges: ["28", "30"],
+    prices: { "28": 470, "30": 400 },
+    unit: "per meter",
   },
   {
     id: 3,
-    name: "Elegant Tile",
+    name: "Versatile Mabati",
     category: "Roofing",
-    image: "/Elegant_tile.jpeg",
-    description: "Premium tile profile for elegant residential roofing",
-    colors: ["Red", "Brown", "Grey", "Black"],
-    gauges: ["0.5mm", "0.7mm"],
-    price: 2500,
+    image: "/Brick tile AND versatile mabat.jpeg",
+    description: "Versatile mabati for flexible roofing solutions",
+    colors: ["Red", "Blue", "Green", "Brown", "Grey"],
+    gauges: ["28", "30"],
+    prices: { "28": 680, "30": 560 },
+    unit: "per meter",
   },
   {
     id: 4,
-    name: "Star Tile",
+    name: "Romantile",
     category: "Roofing",
-    image: "/Star_tile.jpeg",
-    description: "Star tile profile with enhanced aesthetic appeal",
-    colors: ["Red", "Brown", "Grey"],
-    gauges: ["0.5mm", "0.7mm"],
-    price: 2700,
+    image: "/Roman tile AND elagantile.jpeg",
+    description: "Roman tile profile for elegant residential roofing",
+    colors: ["Red", "Brown", "Grey", "Black"],
+    gauges: ["28", "30"],
+    prices: { "28": 650, "30": 555 },
+    unit: "per meter",
   },
   {
     id: 5,
-    name: "Glazed Tile",
+    name: "Euro Tile",
     category: "Roofing",
-    image: "/Glazed__tile.jpeg",
-    description: "Glazed finish with superior weather resistance",
+    image: "/Euro tile elagantile mabati.jpeg",
+    description: "Euro tile profile with modern aesthetic appeal",
     colors: ["Red", "Brown", "Grey", "Green"],
-    gauges: ["0.5mm", "0.7mm"],
-    price: 2800,
+    gauges: ["28", "30"],
+    prices: { "28": 630, "30": 550 },
+    unit: "per meter",
   },
   {
     id: 6,
-    name: "Mandarin Tile",
+    name: "Zee Tile Mabati",
     category: "Roofing",
-    image: "/Mandarin_tile.jpeg",
-    description: "Mandarin tile profile for premium roofing solutions",
+    image: "/Zee tile  AND Curve tile mabati.jpeg",
+    description: "Zee tile profile for premium roofing solutions",
     colors: ["Red", "Brown", "Grey"],
-    gauges: ["0.5mm", "0.7mm"],
-    price: 3000,
+    gauges: ["28", "30"],
+    prices: { "28": 600, "30": 530 },
+    unit: "per meter",
   },
   {
     id: 7,
+    name: "Dumuzaz Mabati",
+    category: "Roofing",
+    image: "/Elegant_tile.jpeg",
+    description: "Dumuzaz mabati for cost-effective roofing",
+    colors: ["Red", "Blue", "Green", "Brown", "Grey"],
+    gauges: ["30"],
+    prices: { "30": 320 },
+    unit: "per meter",
+  },
+  {
+    id: 8,
     name: "Plain Sheet",
     category: "Steel",
     image: "/Plainsheet.jpeg",
     description: "Versatile plain sheets for various applications",
     colors: ["Galvanized", "Aluzinc"],
-    gauges: ["0.3mm", "0.4mm", "0.5mm", "0.7mm"],
-    price: 1500,
+    gauges: ["28", "30"],
+    prices: { "28": 450, "30": 380 },
+    unit: "per meter",
   },
   {
-    id: 8,
+    id: 9,
     name: "Flat Ridges",
     category: "Accessories",
     image: "/Flat_ridges.jpeg",
     description: "Flat ridges for seamless roof finishing",
     colors: ["Red", "Blue", "Green", "Brown", "Grey"],
-    gauges: ["0.4mm", "0.5mm"],
-    price: 600,
+    gauges: ["28", "30"],
+    prices: { "28": 600, "30": 500 },
+    unit: "per meter",
   },
   {
-    id: 9,
+    id: 10,
     name: "Glazed Ridges",
     category: "Accessories",
     image: "/Glazed_ridges.jpeg",
     description: "Glazed ridges matching tile profiles",
     colors: ["Red", "Brown", "Grey"],
-    gauges: ["0.5mm", "0.7mm"],
-    price: 900,
+    gauges: ["28", "30"],
+    prices: { "28": 900, "30": 750 },
+    unit: "per meter",
   },
   {
-    id: 10,
+    id: 11,
     name: "Valley Trays",
     category: "Accessories",
     image: "/Valley_trays.jpeg",
     description: "Valley trays for effective water drainage",
     colors: ["Red", "Blue", "Green", "Brown", "Grey"],
-    gauges: ["0.4mm", "0.5mm"],
-    price: 700,
+    gauges: ["28", "30"],
+    prices: { "28": 700, "30": 600 },
+    unit: "per meter",
+  },
+  {
+    id: 12,
+    name: "Elegant Tile",
+    category: "Roofing",
+    image: "/Elegant_tile.jpeg",
+    description: "Premium tile profile for elegant residential roofing",
+    colors: ["Red", "Brown", "Grey", "Black"],
+    gauges: ["28", "30"],
+    prices: { "28": 720, "30": 600 },
+    unit: "per meter",
+  },
+  {
+    id: 13,
+    name: "Star Tile",
+    category: "Roofing",
+    image: "/Star_tile.jpeg",
+    description: "Star tile profile with enhanced aesthetic appeal",
+    colors: ["Red", "Brown", "Grey"],
+    gauges: ["28", "30"],
+    prices: { "28": 750, "30": 620 },
+    unit: "per meter",
+  },
+  {
+    id: 14,
+    name: "Glazed Tile",
+    category: "Roofing",
+    image: "/Glazed__tile.jpeg",
+    description: "Glazed finish with superior weather resistance",
+    colors: ["Red", "Brown", "Grey", "Green"],
+    gauges: ["28", "30"],
+    prices: { "28": 780, "30": 650 },
+    unit: "per meter",
+  },
+  {
+    id: 15,
+    name: "Mandarin Tile",
+    category: "Roofing",
+    image: "/Mandarin_tile.jpeg",
+    description: "Mandarin tile profile for premium roofing solutions",
+    colors: ["Red", "Brown", "Grey"],
+    gauges: ["28", "30"],
+    prices: { "28": 800, "30": 680 },
+    unit: "per meter",
   },
 ];
 
@@ -125,14 +190,15 @@ export default function Products() {
     : products.filter(p => p.category === selectedCategory);
 
   const handleAddToCart = (product: any, navigate: boolean = false) => {
+    const selectedGaugeValue = selectedGauge[product.id] || product.gauges[0];
     const cartItem: CartItem = {
       id: product.id,
       name: product.name,
       image: product.image,
-      price: product.price,
+      price: (product.prices as any)[selectedGaugeValue] || Object.values(product.prices)[0],
       quantity: selectedQuantity[product.id] || 1,
       color: selectedColor[product.id],
-      gauge: selectedGauge[product.id],
+      gauge: selectedGaugeValue,
     };
     cart.addItem(cartItem);
     if (navigate) {
@@ -238,7 +304,7 @@ export default function Products() {
 
                 {/* Gauges */}
                 <div>
-                  <p className="text-sm font-medium text-steel-700 mb-2">Select Thickness:</p>
+                  <p className="text-sm font-medium text-steel-700 mb-2">Select Gauge:</p>
                   <div className="flex flex-wrap gap-2">
                     {product.gauges.map((gauge) => (
                       <button
@@ -249,15 +315,23 @@ export default function Products() {
                           : "bg-white text-steel-700 border-steel-300 hover:border-primary-500"
                           }`}
                       >
-                        {gauge}
+                        Gauge {gauge}
                       </button>
                     ))}
                   </div>
                 </div>
 
+                {/* Price Display */}
+                <div className="bg-steel-50 rounded-lg p-3">
+                  <p className="text-sm font-medium text-steel-700 mb-1">Price:</p>
+                  <p className="text-2xl font-bold text-primary-600">
+                    KES {selectedGauge[product.id] ? (product.prices as any)[selectedGauge[product.id]] : Object.values(product.prices)[0]} <span className="text-sm font-normal text-steel-600">{product.unit}</span>
+                  </p>
+                </div>
+
                 {/* Quantity */}
                 <div>
-                  <p className="text-sm font-medium text-steel-700 mb-2">Quantity:</p>
+                  <p className="text-sm font-medium text-steel-700 mb-2">Quantity (meters):</p>
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: Math.max(1, (selectedQuantity[product.id] || 1) - 1) })}

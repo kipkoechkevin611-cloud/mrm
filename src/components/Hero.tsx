@@ -45,7 +45,7 @@ export default function Hero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-steel-900/90 via-primary-900/80 to-steel-900/90" />
-        <div className="absolute inset-0 bg-[url('/Box_profile.jpeg')] bg-cover bg-center opacity-20" />
+        <div className="absolute inset-0 bg-[url('/HERO PAGE.jpeg')] bg-cover bg-center opacity-20" />
       </div>
 
       {/* Content */}

@@ -332,6 +332,27 @@ export default function Products() {
                   </div>
                 </div>
 
+                {/* Meters (for per meter products) */}
+                {product.unit === "per meter" && (
+                  <div>
+                    <p className="text-sm font-medium text-steel-700 mb-2">Select Meters:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {[1, 2, 3, 4, 5, 6].map((meter) => (
+                        <button
+                          key={meter}
+                          onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: meter })}
+                          className={`text-xs px-3 py-2 rounded-full border-2 transition-all ${selectedQuantity[product.id] === meter
+                            ? "bg-primary-600 text-white border-primary-600"
+                            : "bg-white text-steel-700 border-steel-300 hover:border-primary-500"
+                            }`}
+                        >
+                          {meter}m
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Price Display */}
                 <div className="bg-steel-50 rounded-lg p-3">
                   <p className="text-sm font-medium text-steel-700 mb-1">Price:</p>

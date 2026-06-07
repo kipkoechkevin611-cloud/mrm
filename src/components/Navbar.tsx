@@ -68,9 +68,12 @@ export default function Navbar() {
           <Link href="/" className="flex items-center space-x-2">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold font-montserrat text-primary-600"
+              className="flex items-center space-x-2"
             >
-              MRM
+              <img src="/LOGO.jpeg" alt="MRM Logo" className="h-12 w-auto" />
+              <div className="text-2xl font-bold font-montserrat text-primary-600">
+                MRM
+              </div>
             </motion.div>
             <span className="hidden sm:block text-sm font-medium text-steel-600">
               Roofing & Steel

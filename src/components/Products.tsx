@@ -194,6 +194,7 @@ export default function Products() {
   const [selectedColor, setSelectedColor] = useState<{ [key: number]: string }>({});
   const [selectedGauge, setSelectedGauge] = useState<{ [key: number]: string }>({});
   const [selectedQuantity, setSelectedQuantity] = useState<{ [key: number]: number }>({});
+  const [selectedMeters, setSelectedMeters] = useState<{ [key: number]: number }>({});
   const router = useRouter();
 
   const filteredProducts = selectedCategory === "All"
@@ -202,12 +203,15 @@ export default function Products() {
 
   const handleAddToCart = (product: any, navigate: boolean = false) => {
     const selectedGaugeValue = selectedGauge[product.id] || product.gauges[0];
+    const meters = selectedMeters[product.id] || 1;
+    const quantity = selectedQuantity[product.id] || 1;
+    const totalQuantity = product.unit === "per meter" ? meters * quantity : quantity;
     const cartItem: CartItem = {
       id: product.id,
       name: product.name,
       image: product.image,
       price: (product.prices as any)[selectedGaugeValue] || Object.values(product.prices)[0],
-      quantity: selectedQuantity[product.id] || 1,
+      quantity: totalQuantity,
       color: selectedColor[product.id],
       gauge: selectedGaugeValue,
     };
@@ -340,8 +344,8 @@ export default function Products() {
                       {[1, 2, 3, 4, 5, 6].map((meter) => (
                         <button
                           key={meter}
-                          onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: meter })}
-                          className={`text-xs px-3 py-2 rounded-full border-2 transition-all ${selectedQuantity[product.id] === meter
+                          onClick={() => setSelectedMeters({ ...selectedMeters, [product.id]: meter })}
+                          className={`text-xs px-3 py-2 rounded-full border-2 transition-all ${selectedMeters[product.id] === meter
                             ? "bg-primary-600 text-white border-primary-600"
                             : "bg-white text-steel-700 border-steel-300 hover:border-primary-500"
                             }`}
@@ -359,7 +363,12 @@ export default function Products() {
                   <p className="text-2xl font-bold text-primary-600">
                     KES {selectedGauge[product.id] ? (product.prices as any)[selectedGauge[product.id]] : Object.values(product.prices)[0]} <span className="text-sm font-normal text-steel-600">{product.unit}</span>
                   </p>
-                  {selectedQuantity[product.id] && selectedQuantity[product.id] > 1 && (
+                  {product.unit === "per meter" && selectedMeters[product.id] && selectedQuantity[product.id] && (
+                    <p className="text-sm text-steel-600 mt-1">
+                      Total: KES {(selectedGauge[product.id] ? (product.prices as any)[selectedGauge[product.id]] : Object.values(product.prices)[0]) * (selectedMeters[product.id] || 1) * (selectedQuantity[product.id] || 1)}
+                    </p>
+                  )}
+                  {product.unit !== "per meter" && selectedQuantity[product.id] && selectedQuantity[product.id] > 1 && (
                     <p className="text-sm text-steel-600 mt-1">
                       Total: KES {(selectedGauge[product.id] ? (product.prices as any)[selectedGauge[product.id]] : Object.values(product.prices)[0]) * (selectedQuantity[product.id] || 1)}
                     </p>

@@ -56,7 +56,7 @@ export default function Cart() {
       `NEW ORDER\n\nCustomer Details:\nName: ${credentials.name}\nPhone: ${credentials.phone}\nEmail: ${credentials.email}\nAddress: ${credentials.address}\n\nOrder Items:\n${orderDetails}\n\nTotal: KES ${cart.getTotalPrice().toLocaleString()}`
     );
 
-    const phoneNumber = "254111333107";
+    const phoneNumber = "254750918945";
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
 
     // Clear cart after order
@@ -191,7 +191,7 @@ export default function Cart() {
                   whileTap={{ scale: 0.98 }}
                   className="flex-1 bg-green-500 text-white py-4 rounded-xl font-semibold hover:bg-green-600 transition-colors flex items-center justify-center space-x-2"
                 >
-                  <span>Order via WhatsApp</span>
+                  <span>Order Now</span>
                   <ArrowRight className="w-5 h-5" />
                 </motion.button>
               </div>

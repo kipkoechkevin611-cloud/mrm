@@ -294,29 +294,51 @@ export default function Products() {
                   <p className="text-2xl font-bold text-primary-600">
                     KES {selectedGauge[product.id] ? (product.prices as any)[selectedGauge[product.id]] : Object.values(product.prices)[0]} <span className="text-sm font-normal text-steel-600">{product.unit}</span>
                   </p>
+                  {selectedQuantity[product.id] && selectedQuantity[product.id] > 1 && (
+                    <p className="text-sm text-steel-600 mt-1">
+                      Total: KES {(selectedGauge[product.id] ? (product.prices as any)[selectedGauge[product.id]] : Object.values(product.prices)[0]) * (selectedQuantity[product.id] || 1)}
+                    </p>
+                  )}
                 </div>
 
-                {/* Quantity */}
-                <div>
-                  <p className="text-sm font-medium text-steel-700 mb-2">Quantity (meters):</p>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: Math.max(1, (selectedQuantity[product.id] || 1) - 1) })}
-                      className="w-12 h-12 rounded-lg border-2 border-steel-300 flex items-center justify-center hover:border-primary-500 hover:bg-primary-50 transition-colors text-xl font-bold text-steel-900"
+                {/* Quantity/Meter Selector */}
+                {product.unit === "per meter" ? (
+                  <div>
+                    <p className="text-sm font-medium text-steel-700 mb-2">Select Meters:</p>
+                    <select
+                      value={selectedQuantity[product.id] || 1}
+                      onChange={(e) => setSelectedQuantity({ ...selectedQuantity, [product.id]: parseInt(e.target.value) })}
+                      className="w-full px-4 py-3 rounded-lg border-2 border-steel-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all outline-none text-base bg-white text-steel-900 font-semibold"
                     >
-                      −
-                    </button>
-                    <span className="w-16 text-center font-bold text-steel-900 text-lg">
-                      {selectedQuantity[product.id] || 1}
-                    </span>
-                    <button
-                      onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: (selectedQuantity[product.id] || 1) + 1 })}
-                      className="w-12 h-12 rounded-lg border-2 border-steel-300 flex items-center justify-center hover:border-primary-500 hover:bg-primary-50 transition-colors text-xl font-bold text-steel-900"
-                    >
-                      +
-                    </button>
+                      {[1, 2, 3, 4, 5, 6].map((meter) => (
+                        <option key={meter} value={meter}>
+                          {meter} meter{meter > 1 ? 's' : ''}
+                        </option>
+                      ))}
+                    </select>
                   </div>
-                </div>
+                ) : (
+                  <div>
+                    <p className="text-sm font-medium text-steel-700 mb-2">Quantity (pieces):</p>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: Math.max(1, (selectedQuantity[product.id] || 1) - 1) })}
+                        className="w-12 h-12 rounded-lg border-2 border-steel-300 flex items-center justify-center hover:border-primary-500 hover:bg-primary-50 transition-colors text-xl font-bold text-steel-900"
+                      >
+                        −
+                      </button>
+                      <span className="w-16 text-center font-bold text-steel-900 text-lg">
+                        {selectedQuantity[product.id] || 1}
+                      </span>
+                      <button
+                        onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: (selectedQuantity[product.id] || 1) + 1 })}
+                        className="w-12 h-12 rounded-lg border-2 border-steel-300 flex items-center justify-center hover:border-primary-500 hover:bg-primary-50 transition-colors text-xl font-bold text-steel-900"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                )}
 
                 {/* Action Buttons */}
                 <div className="flex gap-3 pt-4">

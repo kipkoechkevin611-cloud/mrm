@@ -35,8 +35,19 @@ export default function Navbar() {
       setCartItemCount(cart.getTotalItems());
     };
     updateCartCount();
+    
+    // Listen for custom cart update events
+    const handleCartUpdate = () => {
+      updateCartCount();
+    };
+    
     window.addEventListener('storage', updateCartCount);
-    return () => window.removeEventListener('storage', updateCartCount);
+    window.addEventListener('cartUpdate', handleCartUpdate);
+    
+    return () => {
+      window.removeEventListener('storage', updateCartCount);
+      window.removeEventListener('cartUpdate', handleCartUpdate);
+    };
   }, []);
 
   return (

@@ -31,12 +31,14 @@ export const cart = {
     }
     if (typeof window !== 'undefined') {
       localStorage.setItem('cart', JSON.stringify(cartItems));
+      window.dispatchEvent(new Event('cartUpdate'));
     }
   },
   removeItem: (id: number) => {
     cartItems = cartItems.filter((item) => item.id !== id);
     if (typeof window !== 'undefined') {
       localStorage.setItem('cart', JSON.stringify(cartItems));
+      window.dispatchEvent(new Event('cartUpdate'));
     }
   },
   updateQuantity: (id: number, quantity: number) => {
@@ -45,6 +47,7 @@ export const cart = {
       item.quantity = quantity;
       if (typeof window !== 'undefined') {
         localStorage.setItem('cart', JSON.stringify(cartItems));
+        window.dispatchEvent(new Event('cartUpdate'));
       }
     }
   },
@@ -52,6 +55,7 @@ export const cart = {
     cartItems = [];
     if (typeof window !== 'undefined') {
       localStorage.setItem('cart', JSON.stringify(cartItems));
+      window.dispatchEvent(new Event('cartUpdate'));
     }
   },
   getTotalPrice: () => {

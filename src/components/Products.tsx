@@ -104,8 +104,8 @@ const products = [
     description: "Flat ridges for seamless roof finishing",
     colors: ["Red", "Blue", "Green", "Brown", "Grey"],
     gauges: ["28", "30"],
-    prices: { "28": 600, "30": 500 },
-    unit: "per meter",
+    prices: { "28": 400, "30": 400 },
+    unit: "per piece",
   },
   {
     id: 10,
@@ -115,8 +115,8 @@ const products = [
     description: "Glazed ridges matching tile profiles",
     colors: ["Red", "Brown", "Grey"],
     gauges: ["28", "30"],
-    prices: { "28": 900, "30": 750 },
-    unit: "per meter",
+    prices: { "28": 400, "30": 400 },
+    unit: "per piece",
   },
   {
     id: 11,
@@ -126,52 +126,19 @@ const products = [
     description: "Valley trays for effective water drainage",
     colors: ["Red", "Blue", "Green", "Brown", "Grey"],
     gauges: ["28", "30"],
-    prices: { "28": 700, "30": 600 },
-    unit: "per meter",
+    prices: { "28": 400, "30": 400 },
+    unit: "per piece",
   },
   {
     id: 12,
-    name: "Elegant Tile",
-    category: "Roofing",
-    image: "/Elegant_tile.jpeg",
-    description: "Premium tile profile for elegant residential roofing",
-    colors: ["Red", "Brown", "Grey", "Black"],
+    name: "Roll Top",
+    category: "Accessories",
+    image: "/Flat_ridges.jpeg",
+    description: "Roll top for roof finishing",
+    colors: ["Red", "Blue", "Green", "Brown", "Grey"],
     gauges: ["28", "30"],
-    prices: { "28": 720, "30": 600 },
-    unit: "per meter",
-  },
-  {
-    id: 13,
-    name: "Star Tile",
-    category: "Roofing",
-    image: "/Star_tile.jpeg",
-    description: "Star tile profile with enhanced aesthetic appeal",
-    colors: ["Red", "Brown", "Grey"],
-    gauges: ["28", "30"],
-    prices: { "28": 750, "30": 620 },
-    unit: "per meter",
-  },
-  {
-    id: 14,
-    name: "Glazed Tile",
-    category: "Roofing",
-    image: "/Glazed__tile.jpeg",
-    description: "Glazed finish with superior weather resistance",
-    colors: ["Red", "Brown", "Grey", "Green"],
-    gauges: ["28", "30"],
-    prices: { "28": 780, "30": 650 },
-    unit: "per meter",
-  },
-  {
-    id: 15,
-    name: "Mandarin Tile",
-    category: "Roofing",
-    image: "/Mandarin_tile.jpeg",
-    description: "Mandarin tile profile for premium roofing solutions",
-    colors: ["Red", "Brown", "Grey"],
-    gauges: ["28", "30"],
-    prices: { "28": 800, "30": 680 },
-    unit: "per meter",
+    prices: { "28": 450, "30": 450 },
+    unit: "per piece",
   },
 ];
 
@@ -343,7 +310,7 @@ export default function Products() {
                       {selectedQuantity[product.id] || 1}
                     </span>
                     <button
-                      onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: (selectedQuantity[product.id] || 1) + 1 })}
+                      onClick={() => setSelectedQuantity({ ...selectedQuantity, [product.id]: Math.min(6, (selectedQuantity[product.id] || 1) + 1) })}
                       className="w-12 h-12 rounded-lg border-2 border-steel-300 flex items-center justify-center hover:border-primary-500 hover:bg-primary-50 transition-colors text-xl font-bold text-steel-900"
                     >
                       +

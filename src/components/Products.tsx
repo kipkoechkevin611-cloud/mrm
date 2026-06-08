@@ -104,7 +104,7 @@ const products = [
     description: "Flat ridges for seamless roof finishing",
     colors: ["Red", "Blue", "Green", "Brown", "Grey"],
     gauges: ["28", "30"],
-    prices: { "28": 400, "30": 400 },
+    prices: { "28": 450, "30": 450 },
     unit: "per piece",
   },
   {
@@ -127,17 +127,6 @@ const products = [
     colors: ["Red", "Blue", "Green", "Brown", "Grey"],
     gauges: ["28", "30"],
     prices: { "28": 400, "30": 400 },
-    unit: "per piece",
-  },
-  {
-    id: 12,
-    name: "Roll Top",
-    category: "Accessories",
-    image: "/Flat_ridges.jpeg",
-    description: "Roll top for roof finishing",
-    colors: ["Red", "Blue", "Green", "Brown", "Grey"],
-    gauges: ["28", "30"],
-    prices: { "28": 450, "30": 450 },
     unit: "per piece",
   },
   {
@@ -360,9 +349,15 @@ export default function Products() {
                 {/* Price Display */}
                 <div className="bg-steel-50 rounded-lg p-3">
                   <p className="text-sm font-medium text-steel-700 mb-1">Price:</p>
-                  <p className="text-2xl font-bold text-primary-600">
-                    KES {selectedGauge[product.id] ? (product.prices as any)[selectedGauge[product.id]] : Object.values(product.prices)[0]} <span className="text-sm font-normal text-steel-600">{product.unit}</span>
-                  </p>
+                  {product.unit === "per meter" && selectedMeters[product.id] ? (
+                    <p className="text-2xl font-bold text-primary-600">
+                      KES {(selectedGauge[product.id] ? (product.prices as any)[selectedGauge[product.id]] : Object.values(product.prices)[0]) * (selectedMeters[product.id] || 1)} <span className="text-sm font-normal text-steel-600">for {selectedMeters[product.id]}m</span>
+                    </p>
+                  ) : (
+                    <p className="text-2xl font-bold text-primary-600">
+                      KES {selectedGauge[product.id] ? (product.prices as any)[selectedGauge[product.id]] : Object.values(product.prices)[0]} <span className="text-sm font-normal text-steel-600">{product.unit}</span>
+                    </p>
+                  )}
                   {product.unit === "per meter" && selectedMeters[product.id] && selectedQuantity[product.id] && (
                     <p className="text-sm text-steel-600 mt-1">
                       Total: KES {(selectedGauge[product.id] ? (product.prices as any)[selectedGauge[product.id]] : Object.values(product.prices)[0]) * (selectedMeters[product.id] || 1) * (selectedQuantity[product.id] || 1)}
